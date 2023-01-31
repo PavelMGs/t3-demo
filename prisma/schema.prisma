@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Example {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Product {
+  id                    String   @id @default(cuid())
+  code                  String
+  department            String
+  productName           String
+  brandName             String
+  price                 String
+  retailPrice           String
+  isOneSize             Boolean
+  isDiscount            Boolean
+  isFavorite            Boolean
+  isWishList            Boolean
+  isNewArrival          Boolean
+  isBestSeller          Boolean
+  isPreOrder            Boolean
+  isWeddingShop         Boolean
+  isBeautyProduct       Boolean
+  isOOS                 Boolean
+  color                 String
+  imageURLs             String[]
+  mobileImageURLs       String[]
+  pdpURL                String
+  isFinalSale           Boolean
+  readyDate             String
+  firstReadyDate        String
+  markdownDate          String
+  upcomingMarkdownDate  String
+  markdownPrice         String
+  showMarkdownPrice     Boolean
+  inventoryLevel        Int
+  sizePopularity        Float
+  bagSizeString         String
+  isCollection          Boolean
+  firstNonEmptyCategory String
+  isSizePreSelect       Boolean
+  hoverView             Boolean
+  isModelView           Boolean
+  colorSwatch           Json[]
+}
